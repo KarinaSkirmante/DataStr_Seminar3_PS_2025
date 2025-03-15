@@ -46,5 +46,19 @@ public class MyHeap<Ttype> {
 			
 		}
 		
+		public void enqueue(Ttype element) {
+			if(isFull())
+			{
+				resize();
+			}
+			
+			heap[counter] = element;
+			counter++;
+			
+			//TODO jāsakārto jeb jānodrošina kārtības īpašība jeb jāizsauc reheapUp funkcija
+			
+			
+		}
+		
 
 }
