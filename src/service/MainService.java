@@ -1,6 +1,7 @@
 package service;
 
 import datastr.MyHeap;
+import model.Patient;
 
 public class MainService {
 
@@ -32,14 +33,28 @@ public class MainService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//izņemt lielāko vērtību un to izprintēt
-		//apskatīties, kas tur ir
-		//izņemt lielāko vērtību un to izprintēt
-		//apskatīties, kas tur ir
-		//makeEmpty funkcijas izsaukums
-		//ielikt jaunu elementu
-		//apskatīties, kas tur ir
-
+		System.out.println("--------------------PATIENT HEAP--------------------------");
+		MyHeap<Patient> heapForPatients = new MyHeap<>(2);
+		System.out.println("--------------------ENQUEUE--------------------------");
+		heapForPatients.enqueue(new Patient("Jānis", "Bērziņš", 3));
+		heapForPatients.enqueue(new Patient("Līga", "Jaukā", 5));
+		heapForPatients.enqueue(new Patient("Baiba", "Nejaukā", 9));
+		heapForPatients.enqueue(new Patient("Gatis", "Gudrais", 10));
+		try {
+			heapForPatients.print();
+			System.out.println("--------------------DEQUEUE--------------------------");
+			System.out.println("Max patient: " + heapForPatients.dequeue());//Gatis
+			System.out.println("Max patient: " + heapForPatients.dequeue());//Baiba
+			heapForPatients.print();//saknē Līga un kreisajā pusē Jānis
+			System.out.println("--------------------MAKE EMPTY--------------------------");
+			heapForPatients.makeEmpty();
+			heapForPatients.enqueue(new Patient("Kārlis", "Kalniņš", 5));
+			heapForPatients.enqueue(new Patient("Karlīne", "Liepiņa", 9));
+			heapForPatients.print();//saknē Karlīne un kreisajā pusē Kārlis
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	//bezgalīgas rekursijas piemērs
