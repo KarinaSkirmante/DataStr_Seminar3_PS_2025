@@ -55,10 +55,40 @@ public class MyHeap<Ttype> {
 			heap[counter] = element;
 			counter++;
 			
-			//TODO jāsakārto jeb jānodrošina kārtības īpašība jeb jāizsauc reheapUp funkcija
-			
+			//jāsakārto jeb jānodrošina kārtības īpašība jeb jāizsauc reheapUp funkcija
+			reheapUp(counter-1);
 			
 		}
+		private void reheapUp(int currentChildIndex) {
+			//kreisā bērna index = vecāka index * 2 + 1
+			//laba bērna index = vecāka index * 2 + 2
+			
+			
+			//vecāka index = (kreisā bērna index - 1)/2
+			//vecaka index = (labā bērna index - 2)/2
+			
+			//ja benra index ir 6, tad vienā gadījumā 2.5 un otrā 2
+			
+			int currentParentIndex = (int)((currentChildIndex -1) / 2);
+			
+			if(currentParentIndex >= 0)//tikai tad, ja tāds vecāks eksistē (nevar būt index, kas ir negativs)
+			{
+				//vecāks ir mazāks par savu bērnu, tad mainām sūnu vērtības vietām
+				if( ((Comparable) heap[currentParentIndex]).compareTo(heap[currentChildIndex]) == -1 )
+				{
+					swap(currentParentIndex, currentChildIndex);
+					reheapUp(currentParentIndex);
+				}
+			}
+			
+		}
+		
+		private void swap(int index1, int index2) {
+			Ttype temp = heap[index1];
+			heap[index1] = heap[index2];
+			heap[index2] = temp;	
+		}
+
 		
 
 }
