@@ -175,6 +175,14 @@ public class MyHeap<Ttype> {
 		
 	}
 	
+	public void makeEmpty() {
+		if(!isEmpty()) {
+			size = DEFAULT_SIZE;
+			counter = 0;
+			heap = (Ttype[]) new Object[size];
+			System.gc();
+		}
+	}
 	
 	
 	
