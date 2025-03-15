@@ -96,8 +96,9 @@ public class MyHeap<Ttype> {
 		heap[0] = heap[counter - 1];
 		counter--;
 
-		// TODO janodrošina, lai būtu atkal kārtības īpašība jeb jāizsauc reheapDown
-
+		// janodrošina, lai būtu atkal kārtības īpašība jeb jāizsauc reheapDown
+		reheapDown(0);
+		
 		return maxElement;
 	}
 
@@ -136,5 +137,48 @@ public class MyHeap<Ttype> {
 		// ja nav bērnu, tad nedarām neko
 
 	}
-
+	public void print() throws Exception
+	{
+		//pārbaudi uz isEmpty
+		if(isEmpty())
+		{
+			Exception myException = new Exception("Kaudze ir tukša, tāpēc nevar veikt printēšanu");
+			throw myException;
+		}
+		printHelp(0);
+		
+		
+	}
+	
+	private void printHelp(int currentParentIndex) {
+		System.out.println("P -> " + heap[currentParentIndex]);
+		
+		int currentLeftChildIndex = currentParentIndex * 2 + 1;
+		int currentRightChildIndex = currentParentIndex * 2 + 2;
+		
+		//ja ir kreisais bērns, tad to printēsim
+		if(currentLeftChildIndex < counter)
+		{
+			System.out.println("Kreisais bērns -> " + heap[currentLeftChildIndex] 
+					+ " (" + heap[currentParentIndex] + ")");
+			printHelp(currentLeftChildIndex);
+		}
+		
+		//ja ir labais bērns, tad to printēsim
+		if(currentRightChildIndex < counter) {
+			System.out.println("Labais bērns -> " + heap[currentRightChildIndex]
+					+ " (" + heap[currentParentIndex] + ")");
+			printHelp(currentRightChildIndex);
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }
