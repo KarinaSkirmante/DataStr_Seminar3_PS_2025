@@ -89,6 +89,46 @@ public class MyHeap<Ttype> {
 			heap[index2] = temp;	
 		}
 
-		
+		public Ttype dequeue() throws Exception {
+			if(isEmpty()) {
+				throw new Exception("Kaudze ir tukša un nav iespejams izgūt prioritārāko elementu");
+			}
+			
+			Ttype maxElement =  heap[0];
+			
+			heap[0] = heap[counter-1];
+			counter--;
+			
+			//TODO janodrošina, lai būtu atkal kārtības īpašība jeb jāizsauc reheapDown
+			
+			return maxElement;
+		}
 
+		private void reheapDown(int currentParentIndex)
+		{
+			int currentLeftChildIndex = currentParentIndex * 2 + 1;
+			int currentRightChildIndex = currentParentIndex * 2 + 2;
+			
+			//ja ir abi bērni
+			if(currentLeftChildIndex < counter && currentRightChildIndex < counter)
+			{
+				//if noskaidrot, vai kreisais bērns ir lielāks par labo
+				//ja ir -> salīdzinama šo kreiso bērnu ar pašu vecāku 
+				//        (ja vecāks ir mazāks, tad mainām vietām un izsaucam rekursiju)
+				//if kreisais bērns ir mazaks par labo bērnun
+				//ja ir -. salīdzinām labo bērnu ar pašu vecāku  
+				//(ja vecāks ir mazāks, tad mainām vietām un izsaucam rekursiju)
+			}
+			
+			//ja ir tikai viens bērns un tas ir kreisais (nevar būt, ka ir tikai labais, jo tad neizpildās formas īpašība
+			if(currentLeftChildIndex < counter &&  currentRightChildIndex >= counter)
+			{
+				
+			}
+			//ja nav bērnu, tad nedarām neko
+			
+		}
+		
+		
+		
 }
